@@ -52,3 +52,70 @@ footer {
     color: white;
     margin-top: 20px;
 }sty
+/* ==========================================
+   ระบบตกแต่งและทำแอนิเมชันดาววิบวับ
+   ========================================== */
+.sparkle-container {
+  position: fixed; /* ลอยอยู่บนหน้าจอเวลากดสกรอลล์ลง */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* ป้องกันไม่ให้ดาวบังการคลิกปุ่มอื่นๆ บนเว็บ */
+  z-index: 9999; /* อยู่หน้าสุดของเว็บไซต์ */
+}
+
+.sparkle {
+  position: absolute;
+  border-radius: 50%; /* ทำให้น้องเป็นทรงกลมมินิมอล */
+  background: #ffccd5; /* สีชมพูนมพาสเทล */
+  filter: drop-shadow(0 0 5px #ffccd5); /* เพิ่มแสงเรืองแสงวิบวับ */
+  opacity: 0.7; 
+}
+
+/* ขนาดของดวงดาวแต่ละแบบ */
+.small { width: 4px; height: 4px; }
+.medium { width: 8px; height: 8px; }
+.large { width: 12px; height: 12px; }
+
+/* --- โหมดการเคลื่อนไหว (Animations) --- */
+
+/* 1. กะพริบถี่ๆ เหมือนดาวจริง */
+@keyframes flicker {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(0.7); }
+}
+/* 2. ลอยเยื้องซ้าย-ขวาอย่างนุ่มนวล */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(15px, -10px); }
+  50% { transform: translate(-10px, 15px); }
+  75% { transform: translate(10px, -5px); }
+}
+/* 3. เด้งดึ๋งขึ้นลงเบาๆ น่ารัก */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.1); }
+}
+/* 4. ขยายเข้าขยายออกตามจังหวะ */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 0.4; }
+}
+
+/* สั่งให้แอนิเมชันทำงานวนลูปไปเรื่อยๆ ไม่มีวันหยุด */
+.flicker { animation: flicker 1.5s infinite alternate ease-in-out; }
+.drift { animation: drift 5s infinite alternate ease-in-out; }
+.bounce { animation: bounce 2s infinite alternate ease-in-out; }
+.pulse { animation: pulse 1.8s infinite alternate ease-in-out; }
+
+/* กระจายตำแหน่งน้องดาวไปตามจุดต่างๆ บนหน้าจอ */
+.sparkle:nth-child(1) { top: 15%; left: 20%; animation-delay: 0.2s; }
+.sparkle:nth-child(2) { top: 25%; left: 75%; animation-delay: 0s; }
+.sparkle:nth-child(3) { top: 45%; left: 25%; animation-delay: 0.4s; }
+.sparkle:nth-child(4) { top: 55%; left: 70%; animation-delay: 0.6s; }
+.sparkle:nth-child(5) { top: 75%; left: 30%; animation-delay: 0.8s; }
+.sparkle:nth-child(6) { top: 80%; left: 80%; animation-delay: 1.0s; }
+.sparkle:nth-child(7) { top: 20%; left: 55%; animation-delay: 1.2s; }
+.sparkle:nth-child(8) { top: 60%; left: 15%; animation-delay: 1.4s; }
+.sparkle:nth-child(9) { top: 75%; left: 55%; animation-delay: 1.6s; }
